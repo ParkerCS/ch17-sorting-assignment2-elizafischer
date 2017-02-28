@@ -17,75 +17,67 @@ print()
 # of the following list.
 sort_me = [655, 722, 736, 314, 59, 778, 632, 477, 230, 556, 353, 769, 622, 731, 683, 233, 524, 186, 694, 507, 443, 833, 270, 373, 567, 775, 34]
 
-def select_sort(my_list):
-    for currentpos in range(len(my_list)):
+def select_sort(sort_me):
+    for currentpos in range(len(sort_me)):
         smallpos = currentpos
-        for scanpos in range(currentpos + 1, len(my_list)):
-            if my_list[scanpos] < my_list[smallpos]:
+        for scanpos in range(currentpos + 1, len(sort_me)):
+            if sort_me[scanpos] < sort_me[smallpos]:
                 smallpos = scanpos
-        value = my_list[smallpos]
-        my_list[smallpos] = my_list[currentpos]
-        my_list[currentpos] = value
-        return my_list
+        value = sort_me[smallpos]
+        sort_me[smallpos] = sort_me[currentpos]
+        sort_me[currentpos] = value
+    return sort_me
 
 def print_list(my_list):
     for item in my_list:
         print("{:3}".format(item), end=" ")
     print()
 
+print("Selection Sort")
 print_list(sort_me)
 select_sort(sort_me)
 print_list(sort_me)
-'''
-def sort(my_list):
-    for pos in range(1, len(my_list)): # pos is the first thing in my_list
-        key_pos = pos
-        scan_pos = key_pos - 1
-        key_val = my_list[key_pos]
-        while scan_pos >= 0 and my_list[scan_pos] > key_val: # makes sure key value is still less than the value we are scanning
-            my_list[scan_pos + 1] = my_list[scan_pos]
-            scan_pos -= 1 # moves the scan position to the left
-        my_list[scan_pos + 1] = key_val
-        return my_list
 
-sort(sort_me)
-
-def sort(my_list):
-    for curent_pos in range(len(my_list)):
-        # Find the position that has the smallest number
-        # Start with the current position
-        smallest_pos = curent_pos
-        # Scan left to right (end of the list)
-        for scan_pos in range(curent_pos + 1, len(my_list)):
-            # Is this position smallest?
-            if my_list[scan_pos] < my_list[smallest_pos]:
-                # It is, mark this position as the smallest
-                min_pos = scan_pos
-        # Swap the two values
-        temp = my_list[smallest_pos]
-        my_list[smallest_pos] = my_list[curent_pos]
-        my_list[curent_pos] = temp
-
-def print_list(my_list):
-    for item in my_list:
-        print("{:3}".format(item), end=" ")
-    print()
-
-print_list(sort_me)
-sort(sort_me)
-
-
-#def sort(list):
-    #key = 0
-    #while key <= len(list):
-        #if list[key] > list[key + 1]:
-'''
 
 # Problem 3 - Insertion Sort (8 pts)
 # Make an insertion sort FUNCTION which takes in 1 parameter (the list),
 # sorts it and RETURNS the sorted list.  Then sort and print the result
 # of the following list.
 sort_me2 = [551, 138, 802, 954, 569, 372, 454, 366, 936, 959, 958, 202, 474, 658, 108, 424, 523, 611, 557, 0, 733, 903, 788, 850, 11, 12, 975]
+'''
+def insertion_sort(my_list):
+    for pos in range(1, len(my_list)):
+        key_pos = pos
+        scan_pos = key_pos - 1
+        key_val = my_list[key_pos]
+        while scan_pos >= 0 and my_list[scan_pos] > key_val:
+            my_list[scan_pos + 1] = my_list[scan_pos]
+            scan_pos -= 1
+        my_list[scan_pos + 1] = key_val
+        return my_list
+'''
+def insertion_sort(my_list):
+    go = 0
+    for i in range(len(my_list)):
+        go +=1
+        for pos in range(1 + go, len(my_list)):
+            key_pos = pos
+            scan_pos = key_pos - 1
+            key_val = my_list[key_pos]
+            while scan_pos >= 0 and my_list[scan_pos] > key_val:
+                my_list[scan_pos + 1] = my_list[scan_pos]
+                scan_pos -= 1
+            my_list[scan_pos + 1] = key_val
+    return my_list
+
+
+
+print("\nInsertion Sort")
+print_list(sort_me2)
+insertion_sort(sort_me2)
+print_list(sort_me2)
+
+
 
 # Problem 4 - Efficiency? (10 pts)
 # Modify your two functions so that they track the number of times
